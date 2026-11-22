@@ -1,4 +1,5 @@
 import type { Route } from "./+types/index";
+import ProjectCard from "~/components/ProjectCard";
 import type { Project } from "~/types";
 
 export async function loader({
@@ -11,14 +12,19 @@ export async function loader({
 }
 
 export default function ProjectsPage({ loaderData }: Route.ComponentProps) {
-  const { projects } = loaderData;
-  console.log(projects);
+  const { projects } = loaderData as { projects: Project[] };
 
-  // const { id, title, description, url, data, category, featured } = loaderData;
+  console.log(projects);
 
   return (
     <>
       <h2 className="mb-8 text-3xl font-bold">🚀 Projects</h2>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
     </>
   );
 }
