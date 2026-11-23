@@ -11,6 +11,11 @@ export async function loader({
   return { projects: data };
 }
 
+// HydrateFallback is rendered while the client loader is running
+export function HydrateFallback() {
+  return <div>Loading...</div>;
+}
+
 export default function ProjectsPage({ loaderData }: Route.ComponentProps) {
   const { projects } = loaderData as { projects: Project[] };
 

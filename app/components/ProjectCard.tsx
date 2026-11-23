@@ -5,7 +5,7 @@ import type { Project } from "~/types";
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
-      to={`projects/${project.id}`}
+      to={`/projects/${project.id}`}
       className="block h-full transform transition duration-300 hover:scale-[1.02]"
     >
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800 shadow-sm transition hover:shadow-md">
