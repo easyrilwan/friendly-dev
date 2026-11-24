@@ -28,7 +28,14 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div className="mt-auto flex items-center justify-between text-sm text-gray-400">
             <span>{project.category}</span>
 
-            <span>{new Date(project.date).toLocaleDateString()}</span>
+            <span>
+              {new Date(project.date).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "2-digit",
+                year: "numeric",
+              })}
+            </span>
+            {/* <span>{new Date(project.date).toLocaleDateString()}</span> */}
           </div>
         </div>
       </div>

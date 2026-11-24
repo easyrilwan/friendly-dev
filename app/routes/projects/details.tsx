@@ -30,7 +30,7 @@ export default function ProjectDetailsPage({
   const project = loaderData;
   console.log(project);
 
-  return (
+    (
     <>
       <Link
         to="/projects"
@@ -55,8 +55,16 @@ export default function ProjectDetailsPage({
           </h1>
 
           <p className="mb-4 text-sm text-gray-300">
-            {new Date(project.date).toLocaleDateString()} • {project.category}
+            {new Date(project.date).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "2-digit",
+              year: "numeric",
+            })}{" "}
+            • {project.category}
           </p>
+          {/* <p className="mb-4 text-sm text-gray-300">
+            {new Date(project.date).toLocaleDateString()} • {project.category}
+          </p> */}
 
           <p className="mb-6 text-gray-200">{project.description}</p>
 
