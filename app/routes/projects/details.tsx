@@ -30,7 +30,7 @@ export default function ProjectDetailsPage({
   const project = loaderData;
   console.log(project);
 
-    (
+  return (
     <>
       <Link
         to="/projects"
