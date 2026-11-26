@@ -28,7 +28,8 @@ export default function ProjectDetailsPage({
   loaderData,
 }: Route.ComponentProps) {
   const project = loaderData;
-  console.log(project);
+
+  // console.log(project);
 
   return (
     <>
