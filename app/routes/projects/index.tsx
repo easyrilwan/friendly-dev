@@ -45,7 +45,7 @@ export default function ProjectsPage({ loaderData }: Route.ComponentProps) {
     "All",
     ...new Set(projects.map((project) => project.category)),
   ];
-  // console.log(categories);
+  // console.log(categories)
 
   // Filter Projects Based On The Category
   const filterProjects =
