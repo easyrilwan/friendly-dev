@@ -5,6 +5,13 @@ import Pagination from "~/components/Pagination";
 import ProjectCard from "~/components/ProjectCard";
 import type { Project } from "~/types";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "The Friendly Dev Portfolio | Projects" },
+    { name: "description", content: "My Website Projects Portfolio" },
+  ];
+}
+
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Project[] }> {
