@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-const AboutPreview = () => {
+export default function AboutPreview() {
   return (
     <section className="mt-12 flex flex-col items-center gap-8 rounded-lg bg-gray-900 p-10 md:flex-row">
       <img
@@ -26,6 +26,4 @@ const AboutPreview = () => {
       </div>
     </section>
   );
-};
-
-export default AboutPreview;
+}
