@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 import type { Route } from "./+types/index";
@@ -15,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Project[] }> {
-  const res = await fetch("http://localhost:8000/projects");
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/projects`);
 
   if (!res.ok)
     throw new Response("Failed to fetch projects", {
@@ -73,18 +74,22 @@ export default function ProjectsPage({ loaderData }: Route.ComponentProps) {
               setSelectedCategory(category);
               setCurrentPage(1);
             }}
-            className={`cursor-pointer rounded px-3 py-1 text-sm ${selectedCategory === category ? "bg-blue-600 text-white" : "bg-gray-700 hover:bg-gray-500"}`}
+            className={`cursor-pointer rounded px-3 py-1 text-sm text-white ${selectedCategory === category ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-500"}`}
           >
             {category}
           </button>
         ))}
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        {currentProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div layout className="grid gap-6 sm:grid-cols-2">
+          {currentProjects.map((project) => (
+            <motion.div key={project.id} layout>
+              <ProjectCard key={project.id} project={project} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
 
       {totalPages > 1 && (
         <Pagination

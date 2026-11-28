@@ -8,7 +8,9 @@ export async function clientLoader({
   request,
   params,
 }: Route.ClientLoaderArgs): Promise<Project> {
-  const res = await fetch(`http://localhost:8000/projects/${params.id}`);
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/projects/${params.id}`,
+  );
 
   if (!res.ok) throw new Response("Project Not Found", { status: 404 });
 
@@ -55,7 +57,7 @@ export default function ProjectDetailsPage({
             {project.title}
           </h1>
 
-          <p className="mb-4 text-sm text-gray-300">
+          <p className="mb-4 text-sm text-gray-700 dark:text-gray-300">
             {new Date(project.date).toLocaleDateString("en-GB", {
               day: "numeric",
               month: "2-digit",
@@ -67,7 +69,9 @@ export default function ProjectDetailsPage({
             {new Date(project.date).toLocaleDateString()} • {project.category}
           </p> */}
 
-          <p className="mb-6 text-gray-200">{project.description}</p>
+          <p className="mb-6 text-gray-800 dark:text-gray-200">
+            {project.description}
+          </p>
 
           <a
             href={project.url}
